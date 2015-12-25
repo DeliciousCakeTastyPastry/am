@@ -5,14 +5,25 @@ mysqlpassword=niggerwut
 pre=${domainname%%.*}
 suff=${domainname##*.}
 wpprefix="${pre}${suff}"
-#todo next: create database/tables etc for multiple wps
-#WHERE I LEFT OFF: Sites all point to original wp install, need diff databases?
+
+#Now create wp-config.php for each site
+#Also note http://alpnames.com/domain-registration/bulk-domain-registration.php
+
+
 function downloadwordpress(){
+	local olddir=`pwd`
 	local wplink=https://wordpress.org/latest.tar.gz
 	cd /var/www/$domainname/public_html
 	wget -O wordpress.tar.gz $wplink
 	tar -xzf wordpress.tar.gz
 	rm wordpress.tar.gz
+	cd $olddir
+}
+
+function createwpconfigphp(){
+	cp ./configtemplate.php ./tmp.php
+	sed -i "s/DOMAINNAME/${wpprefix}wordpress/" ./tmp.php
+	mv ./tmp.php /var/www/$domainname/public_html/wordpress/wp-config.php
 }
 
 function cleanup(){
@@ -105,6 +116,7 @@ checkforphp
 installvirtualhost
 restarteverything
 downloadwordpress
+createwpconfigphp
 #cleanup
 
 #todo: create/modify apache's virtualhosts
