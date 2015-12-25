@@ -2,7 +2,9 @@
 # First argument is the domain name
 domainname=$1
 mysqlpassword=niggerwut
-wpprefix=${domainname%%.*}
+pre=${domainname%%.*}
+suff=${domainname##*.}
+wpprefix="${pre}${suff}"
 #todo next: create database/tables etc for multiple wps
 #WHERE I LEFT OFF: Sites all point to original wp install, need diff databases?
 function downloadwordpress(){
