@@ -40,7 +40,7 @@ function checkformysql(){
 function securemysql(){
 #http://forums.mysql.com/read.php?11,284110,284110
 #runs mysql_secure_installation noninteractively
-	./noninteractivemysql_secure_installation.sh $mysqlpassword $mysqlpassword
+	./noninteractive_mysql_secure_installation.sh $mysqlpassword $mysqlpassword
 }
 
 function createdatabase(){
