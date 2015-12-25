@@ -8,6 +8,7 @@ wpprefix="${pre}${suff}"
 
 #Now create wp-config.php for each site
 #Also note http://alpnames.com/domain-registration/bulk-domain-registration.php
+#TODO: Use wp-cli to configure the sites with templates/plugins
 
 
 function downloadwordpress(){
