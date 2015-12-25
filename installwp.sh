@@ -91,15 +91,15 @@ function checkforphp(){
 
 function restarteverything(){
 	service mysql restart
-	service apache restart
+	service apache2 restart
 }
 
-installvirtualhost
 checkformysql
-#securemysql
+securemysql
 createdatabase
 checkforapache
 checkforphp
+installvirtualhost
 restarteverything
 downloadwordpress
 #cleanup
