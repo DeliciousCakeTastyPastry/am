@@ -1,0 +1,2 @@
+cd /var/wwww/$domainname/public_html/wordpress
+php wp-cli.php --allow-root core install and provide params
