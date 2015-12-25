@@ -2,6 +2,7 @@
 # First argument is the domain name
 domainname=$1
 mysqlpassword=niggerwut
+wpprefix=${domainname%%.*}
 #todo next: create database/tables etc for multiple wps
 #WHERE I LEFT OFF: Sites all point to original wp install, need diff databases?
 function downloadwordpress(){
@@ -44,7 +45,7 @@ function securemysql(){
 }
 
 function createdatabase(){
-	mysql -u root -p$mysqlpassword -e "CREATE DATABASE wordpress; GRANT ALL ON wordpress.* to 'wpadmin' identified by 'niggerwut'; flush privileges;"
+	mysql -u root -p$mysqlpassword -e "CREATE DATABASE ${wpprefix}wordpress; GRANT ALL ON wordpress.* to 'wpadmin' identified by 'niggerwut'; flush privileges;"
 }
 
 function checkforapache(){
