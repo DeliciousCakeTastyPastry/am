@@ -5,11 +5,17 @@ mysqlpassword=niggerwut
 pre=${domainname%%.*}
 suff=${domainname##*.}
 wpprefix="${pre}${suff}"
+adminuser=nigger
+adminpassword=nigger
+adminemail="wat@wat.com"
 
 #Now create wp-config.php for each site
 #Also note http://alpnames.com/domain-registration/bulk-domain-registration.php
 #TODO: Use wp-cli to configure the sites with templates/plugins
 
+function installwordpress(){
+	php ./wp-cli.phar --allow-root core install --url="${domainname}/wp-admin/install.php" --title=TITLE --admin_user="$adminuser" --admin_password="$adminpassword" --admin_email="$adminemail"
+}
 
 function downloadwordpress(){
 	local olddir=`pwd`
@@ -18,6 +24,8 @@ function downloadwordpress(){
 	wget -O wordpress.tar.gz $wplink
 	tar -xzf wordpress.tar.gz
 	rm wordpress.tar.gz
+	cd wordpress
+	mv ./* ../
 	cd $olddir
 }
 
@@ -118,6 +126,7 @@ installvirtualhost
 restarteverything
 downloadwordpress
 createwpconfigphp
+installwordpress
 #cleanup
 
 #todo: create/modify apache's virtualhosts
