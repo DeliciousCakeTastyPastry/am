@@ -1,6 +1,7 @@
 #!/bin/bash
 # First argument is the domain name
 domainname=$1
+pwd=`pwd`
 mysqlpassword=niggerwut
 pre=${domainname%%.*}
 suff=${domainname##*.}
@@ -13,8 +14,16 @@ adminemail="wat@wat.com"
 #Also note http://alpnames.com/domain-registration/bulk-domain-registration.php
 #TODO: Use wp-cli to configure the sites with templates/plugins
 
+function installrandomtheme(){
+	export numberofthemes=`wc -l themelist.txt | cut -d" " -f 1`
+	num=`shuf -i 1-$numberofthemes -n 1`
+	themeurl=`head -n $num themelist.txt | tail -n 1`
+	
+}
+
 function installwordpress(){
-	php ./wp-cli.phar --allow-root core install --url="${domainname}/wp-admin/install.php" --title=TITLE --admin_user="$adminuser" --admin_password="$adminpassword" --admin_email="$adminemail"
+	cd /var/www/$domainname/public_html/wordpress
+	php $pwd/wp-cli.phar --allow-root core install --url="${domainname}/wp-admin/install.php" --title=TITLE --admin_user="$adminuser" --admin_password="$adminpassword" --admin_email="$adminemail"
 }
 
 function downloadwordpress(){

@@ -1,0 +1,9 @@
+function installrandomtheme(){
+        export numberofthemes=`wc -l themelist.txt | cut -d" " -f 1`
+        num=`shuf -i 1-$numberofthemes -n 1`
+	echo $num
+        themeurl=`head -n $num themelist.txt | tail -n 1`
+	echo $themeurl
+}
+
+installrandomtheme
