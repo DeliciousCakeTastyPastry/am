@@ -15,10 +15,19 @@ adminemail="wat@wat.com"
 #TODO: Use wp-cli to configure the sites with templates/plugins
 
 function installrandomtheme(){
+	cd $pwd
 	export numberofthemes=`wc -l themelist.txt | cut -d" " -f 1`
-	num=`shuf -i 1-$numberofthemes -n 1`
-	themeurl=`head -n $num themelist.txt | tail -n 1`
-	
+	local num=`shuf -i 1-$numberofthemes -n 1`
+	local themeurl=`head -n $num themelist.txt | tail -n 1`
+	php wp-cli.phar --allow-root theme install $themeurl --activate	
+}
+
+function installplugins(){
+	cd $pwd
+	while read line
+	do
+	php wp-cli.phar --allow-root plugin install $line --activate --path="/var/www/$domainname/public_html"
+	done < pluginlist.txt
 }
 
 function installwordpress(){
@@ -136,6 +145,8 @@ restarteverything
 downloadwordpress
 createwpconfigphp
 installwordpress
+installrandomtheme
+installplugins
 #cleanup
 
 #todo: create/modify apache's virtualhosts
