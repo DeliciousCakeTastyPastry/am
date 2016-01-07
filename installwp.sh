@@ -22,6 +22,12 @@ function installrandomtheme(){
 	php wp-cli.phar --allow-root theme install $themeurl --path="/var/www/$domainname/public_html" --activate	
 }
 
+function setplugindefaults(){
+	cd $pwd
+	local value=`cat ./disablecommentsdefaultvalue.txt`
+	mysql -u root -p$mysqlpassword $wpprefix -e "update wp_options set option_value=$value where option_name=disable_comments_options";
+}
+
 function installplugins(){
 	cd $pwd
 	while read line
