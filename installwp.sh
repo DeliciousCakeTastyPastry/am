@@ -36,8 +36,7 @@ function installplugins(){
 }
 
 function installwordpress(){
-	cd /var/www/$domainname/public_html/wordpress
-	php $pwd/wp-cli.phar --allow-root core install --url="${domainname}/wp-admin/install.php" --title=TITLE --admin_user="$adminuser" --admin_password="$adminpassword" --admin_email="$adminemail"
+	php $pwd/wp-cli.phar --allow-root core install --url="/var/www/${domainname}/wp-admin/install.php" --title=TITLE --admin_user="$adminuser" --admin_password="$adminpassword" --admin_email="$adminemail"
 	cd $pwd
 }
 
