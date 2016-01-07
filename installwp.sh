@@ -19,7 +19,7 @@ function installrandomtheme(){
 	export numberofthemes=`wc -l themelist.txt | cut -d" " -f 1`
 	local num=`shuf -i 1-$numberofthemes -n 1`
 	local themeurl=`head -n $num themelist.txt | tail -n 1`
-	php wp-cli.phar --allow-root theme install $themeurl --activate	
+	php wp-cli.phar --allow-root theme install $themeurl --path="/var/www/$domainname/public_html" --activate	
 }
 
 function installplugins(){
