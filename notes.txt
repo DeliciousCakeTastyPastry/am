@@ -1,0 +1,12 @@
+i can probably write that direct string via query
+select option_name, option_value from wp_options where option_name="disable_comments_options";
+to the database to turn on the option....
+
+how to test:
+do fresh install, extract string
+set options, extract string
+compare strings, will be different surely
+then do fresh install
+set options again, see if string matches again, they should
+then do fresh install, directly edit string via mysql
+see if functionality is changed...
