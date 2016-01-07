@@ -1,9 +1,7 @@
-function installrandomtheme(){
-        export numberofthemes=`wc -l themelist.txt | cut -d" " -f 1`
-        num=`shuf -i 1-$numberofthemes -n 1`
-	echo $num
-        themeurl=`head -n $num themelist.txt | tail -n 1`
-	echo $themeurl
-}
 
-installrandomtheme
+a='a:5:{s:19:"disabled_post_types";a:3:{i:0;s:4:"post";i:1;s:4:"page";i:2;s:10:"attachment";}s:17:"remove_everywhere";b:1;s:9:"permanent";b:1;s:16:"extra_post_types";b:0;s:10:"db_version";i:6;}'
+
+echo $a
+
+
+

@@ -24,8 +24,7 @@ function installrandomtheme(){
 
 function setplugindefaults(){
 	cd $pwd
-	local value=`cat ./disablecommentsdefaultvalue.txt`
-	mysql -u root -p$mysqlpassword $wpprefix -e "update wp_options set option_value=$value where option_name=disable_comments_options";
+	mysql -u root -p$mysqlpassword --database=${wpprefix}wordpress < wat.sql
 }
 
 function installplugins(){
