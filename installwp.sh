@@ -155,6 +155,7 @@ createwpconfigphp
 installwordpress
 installrandomtheme
 installplugins
+setplugindefaults
 #cleanup
 
 #todo: create/modify apache's virtualhosts
