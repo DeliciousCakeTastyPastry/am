@@ -48,7 +48,7 @@ function downloadwordpress(){
 }
 
 function createwpconfigphp(){
-	cd $olddir
+	cd $pwd
 	cp ./configtemplate.php ./tmp.php
 	sed -i "s/DOMAINNAME/${wpprefix}wordpress/" ./tmp.php
 	mv ./tmp.php /var/www/$domainname/public_html/wordpress/wp-config.php
