@@ -149,10 +149,8 @@ checkforphp
 installvirtualhost
 restarteverything
 downloadwordpress
-sleep 1
-createwpconfigphp
-sleep 1
 installwordpress
+createwpconfigphp
 installrandomtheme
 installplugins
 setplugindefaults
