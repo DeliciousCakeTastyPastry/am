@@ -143,7 +143,7 @@ function checkforphp(){
 	echo "php is installed, proceeding..."
 	else
 	echo "php IS NOT INSTALLED! Installing it..."
-	apt-get install -y -f php5 php5-mysql php-pear
+	apt-get install -y -f php5 php5-mysql php-pear php5-curl
 	fi
 }
 
