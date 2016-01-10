@@ -14,6 +14,16 @@ adminemail="wat@wat.com"
 #Also note http://alpnames.com/domain-registration/bulk-domain-registration.php
 #TODO: Use wp-cli to configure the sites with templates/plugins
 
+function installphpbaylite(){
+	cd $pwd
+	mv phpbaylite.zip /var/www/$domainname/public_html/wp-content/plugins/phpbaylite.zip
+	cd /var/www/$domainname/public_html/wp-content/plugins/
+	unzip /var/www/$domainname/public_html/wp-content/plugins/phpbaylite.zip
+	php $pwd/wp-cli.phar --allow-root plugin activate phpbaylite --path="/var/www/$domainname/public_html"
+	cd $pwd
+}
+
+
 function installrandomtheme(){
 	cd $pwd
 	export numberofthemes=`wc -l themelist.txt | cut -d" " -f 1`
@@ -154,6 +164,7 @@ createwpconfigphp
 installwordpress
 installrandomtheme
 installplugins
+installphpbaylite
 setplugindefaults
 #cleanup
 
