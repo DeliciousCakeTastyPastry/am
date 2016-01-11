@@ -16,7 +16,7 @@ adminemail="wat@wat.com"
 
 function installphpbaylite(){
 	cd $pwd
-	mv phpbaylite.zip /var/www/$domainname/public_html/wp-content/plugins/phpbaylite.zip
+	mv phpBayLite.zip /var/www/$domainname/public_html/wp-content/plugins/phpbaylite.zip
 	cd /var/www/$domainname/public_html/wp-content/plugins/
 	unzip /var/www/$domainname/public_html/wp-content/plugins/phpbaylite.zip
 	php $pwd/wp-cli.phar --allow-root plugin activate phpbaylite --path="/var/www/$domainname/public_html"
